@@ -1,5 +1,6 @@
 package hello.servlet.web.frontcontroller.v3;
 
+import hello.servlet.web.frontcontroller.ModelView;
 import hello.servlet.web.frontcontroller.MyView;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import java.util.Map;
 @WebServlet(name = "frontControllerServletV3", urlPatterns = "/front-controller/v3/*")
 public class FrontControllerServletV3 extends HttpServlet {
     private Map<String, ControllerV3> controllerMap = new HashMap<>();
+
     public FrontControllerServletV3() {
         controllerMap.put("/frontController/v3/members/new-form", new MemberFormControllerV3());
         controllerMap.put("/frontController/v3/members/save", new MemberSaveControllerV3());
@@ -24,12 +26,18 @@ public class FrontControllerServletV3 extends HttpServlet {
     protected void service(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String requestURI = request.getRequestURI();
 
-        ControllerV3 controllerV3 = controllerMap.get(requestURI);
+        ControllerV3 controller = controllerMap.get(requestURI);
 
-        if (controllerV3 == null) {
+        if (controller == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+        Map<String, String> paramMap = createParamMap(request);
+        ModelView mv = controller.process(paramMap);
+
+        String viewName = mv.getName();
+        MyView view = viewResolver(viewName);
+        view.render(mv.getModel(), request, response);
 
 
     }
