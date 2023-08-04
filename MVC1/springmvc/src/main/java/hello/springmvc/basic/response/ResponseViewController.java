@@ -19,7 +19,7 @@ public class ResponseViewController {
         model.addAttribute("data", "안녕하세요 사람들");
         return "response/hello";
     }
-    @RequestMapping("/response-view-v3")
+    @RequestMapping("/response/hello")
     public void responseViewV3(Model model) {
         model.addAttribute("data", "안녕하세요 response-view-v3입니당");
     }
