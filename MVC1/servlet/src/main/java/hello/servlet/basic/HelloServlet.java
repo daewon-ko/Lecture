@@ -1,4 +1,4 @@
-package Spring.MVC1.servlet.main.java.hello.servlet;
+package hello.servlet.basic;
 
 import com.sun.net.httpserver.HttpServer;
 
