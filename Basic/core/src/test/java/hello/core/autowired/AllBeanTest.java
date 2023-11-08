@@ -33,6 +33,8 @@ public class AllBeanTest {
     }
 
     static class DiscountService{
+
+
         private final Map<String, DiscountPolicy> policyMap;
         private final List<DiscountPolicy> policies;
 
