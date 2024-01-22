@@ -1,4 +1,4 @@
-package jpa.shop.web;
+package jpa.shop.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;

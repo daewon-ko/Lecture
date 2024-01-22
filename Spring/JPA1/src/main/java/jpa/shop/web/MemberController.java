@@ -3,6 +3,7 @@ package jpa.shop.web;
 import jakarta.validation.Valid;
 import jpa.shop.domain.Address;
 import jpa.shop.domain.Member;
+import jpa.shop.dto.MemberForm;
 import jpa.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
