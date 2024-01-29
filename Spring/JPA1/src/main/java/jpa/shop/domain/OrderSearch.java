@@ -1,4 +1,4 @@
-package jpa.shop.repository;
+package jpa.shop.domain;
 
 import jpa.shop.domain.OrderStatus;
 import lombok.Getter;

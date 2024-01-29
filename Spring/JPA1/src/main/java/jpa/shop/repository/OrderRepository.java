@@ -5,6 +5,7 @@ import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
 import jpa.shop.domain.Member;
 import jpa.shop.domain.Order;
+import jpa.shop.domain.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
