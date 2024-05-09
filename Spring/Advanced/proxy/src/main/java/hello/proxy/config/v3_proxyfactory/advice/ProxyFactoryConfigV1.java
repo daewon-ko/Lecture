@@ -1,4 +1,4 @@
-package hello.proxy.v3_proxyfactory.advice;
+package hello.proxy.config.v3_proxyfactory.advice;
 
 import hello.proxy.app.v1.*;
 import hello.proxy.trace.logtrace.LogTrace;

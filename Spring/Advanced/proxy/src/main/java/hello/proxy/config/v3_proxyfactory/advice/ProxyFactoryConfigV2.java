@@ -1,6 +1,5 @@
-package hello.proxy.v3_proxyfactory.advice;
+package hello.proxy.config.v3_proxyfactory.advice;
 
-import hello.proxy.app.v1.OrderRepositoryV1;
 import hello.proxy.app.v2.OrderControllerV2;
 import hello.proxy.app.v2.OrderRepositoryV2;
 import hello.proxy.app.v2.OrderServiceV2;
@@ -12,8 +11,6 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.NameMatchMethodPointcut;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.xml.stream.events.StartDocument;
 
 @Slf4j
 @Configuration
