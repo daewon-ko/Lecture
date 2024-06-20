@@ -109,7 +109,7 @@ class ProductRepositoryTest {
         // List에 대한 테스트
         // 1. 사이즈 체크
         assertThat(products).hasSize(2)
-                .extracting("productNumber", "name", "sellingStatus")   // 추출
+                .extracting("productNufmber", "name", "sellingStatus")   // 추출
                 .containsExactlyInAnyOrder(
                         tuple("001", "아메리카노", SELLING),
                         tuple("002", "카페라떼", HOLD)
