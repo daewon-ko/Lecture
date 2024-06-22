@@ -1,18 +1,15 @@
 package sample.cafekiosk_review.spring.domain.api.service.order;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Transactional;
-import sample.cafekiosk_review.spring.domain.api.service.order.request.OrderCreateRequest;
-import sample.cafekiosk_review.spring.domain.api.service.order.response.OrderResponse;
+import sample.cafekiosk_review.spring.api.service.order.OrderService;
+import sample.cafekiosk_review.spring.api.service.order.request.OrderCreateRequest;
+import sample.cafekiosk_review.spring.api.service.order.response.OrderResponse;
 import sample.cafekiosk_review.spring.domain.order.OrderRepository;
-import sample.cafekiosk_review.spring.domain.orderproduct.OrderProduct;
 import sample.cafekiosk_review.spring.domain.orderproduct.OrderProductRepository;
 import sample.cafekiosk_review.spring.domain.product.Product;
 import sample.cafekiosk_review.spring.domain.product.ProductRepository;

@@ -1,13 +1,12 @@
-package sample.cafekiosk_review.spring.domain.api.service.product;
+package sample.cafekiosk_review.spring.api.service.product;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import sample.cafekiosk_review.spring.domain.api.service.controller.product.dto.request.ProductCreateRequest;
-import sample.cafekiosk_review.spring.domain.api.service.product.response.ProductResponse;
+import sample.cafekiosk_review.spring.api.service.product.response.ProductResponse;
+import sample.cafekiosk_review.spring.api.controller.product.dto.request.ProductCreateRequest;
 import sample.cafekiosk_review.spring.domain.product.Product;
 import sample.cafekiosk_review.spring.domain.product.ProductRepository;
 import sample.cafekiosk_review.spring.domain.product.ProductSellingStatus;
-import sample.cafekiosk_review.spring.domain.product.ProductType;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,10 +1,10 @@
-package sample.cafekiosk_review.spring.domain.api.service.order;
+package sample.cafekiosk_review.spring.api.service.order;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sample.cafekiosk_review.spring.domain.api.service.order.request.OrderCreateRequest;
-import sample.cafekiosk_review.spring.domain.api.service.order.response.OrderResponse;
+import sample.cafekiosk_review.spring.api.service.order.request.OrderCreateRequest;
+import sample.cafekiosk_review.spring.api.service.order.response.OrderResponse;
 import sample.cafekiosk_review.spring.domain.order.Order;
 import sample.cafekiosk_review.spring.domain.order.OrderRepository;
 import sample.cafekiosk_review.spring.domain.product.Product;

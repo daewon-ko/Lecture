@@ -1,17 +1,30 @@
-package sample.cafekiosk_review.spring.domain.api.service.controller.product.dto.request;
+package sample.cafekiosk_review.spring.api.controller.product.dto.request;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import sample.cafekiosk_review.spring.domain.product.Product;
 import sample.cafekiosk_review.spring.domain.product.ProductSellingStatus;
 import sample.cafekiosk_review.spring.domain.product.ProductType;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 
 @Getter
+@NoArgsConstructor
 public class ProductCreateRequest {
+    @NotNull
     private ProductType type;
+
+    @NotNull
     private ProductSellingStatus sellingStatus;
+
+    @NotBlank
     private String name;
+
+    @Positive
     private int price;
 
     @Builder

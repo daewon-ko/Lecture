@@ -1,4 +1,4 @@
-package sample.cafekiosk_review.spring.domain.api.service.order.request;
+package sample.cafekiosk_review.spring.api.service.order.request;
 
 
 import lombok.Builder;

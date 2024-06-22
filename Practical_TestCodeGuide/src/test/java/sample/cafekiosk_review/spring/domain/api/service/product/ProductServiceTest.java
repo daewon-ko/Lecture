@@ -1,14 +1,14 @@
 package sample.cafekiosk_review.spring.domain.api.service.product;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import sample.cafekiosk_review.spring.domain.api.service.controller.product.dto.request.ProductCreateRequest;
-import sample.cafekiosk_review.spring.domain.api.service.product.response.ProductResponse;
+import sample.cafekiosk_review.spring.api.controller.product.dto.request.ProductCreateRequest;
+import sample.cafekiosk_review.spring.api.service.product.ProductService;
+import sample.cafekiosk_review.spring.api.service.product.response.ProductResponse;
 import sample.cafekiosk_review.spring.domain.product.Product;
 import sample.cafekiosk_review.spring.domain.product.ProductRepository;
 import sample.cafekiosk_review.spring.domain.product.ProductSellingStatus;
@@ -17,7 +17,6 @@ import sample.cafekiosk_review.spring.domain.product.ProductType;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static sample.cafekiosk_review.spring.domain.product.ProductSellingStatus.*;
 import static sample.cafekiosk_review.spring.domain.product.ProductType.HANDMADE;
 
