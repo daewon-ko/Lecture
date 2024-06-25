@@ -3,6 +3,7 @@ package sample.cafekiosk_review.spring.api.controller.product.dto.request;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sample.cafekiosk_review.spring.api.service.order.request.ProductServiceCreateRequest;
 import sample.cafekiosk_review.spring.domain.product.Product;
 import sample.cafekiosk_review.spring.domain.product.ProductSellingStatus;
 import sample.cafekiosk_review.spring.domain.product.ProductType;
@@ -15,16 +16,16 @@ import javax.validation.constraints.Positive;
 @Getter
 @NoArgsConstructor
 public class ProductCreateRequest {
-    @NotNull
+    @NotNull(message = "상품 타입은 필수입니다.")
     private ProductType type;
 
-    @NotNull
+    @NotNull(message = "상품 판매상태는 필수입니다.")
     private ProductSellingStatus sellingStatus;
 
-    @NotBlank
+    @NotBlank(message = "상품 이름은 필수입니다.")
     private String name;
 
-    @Positive
+    @Positive(message = "상품 가격은 양수여야 합니다.")
     private int price;
 
     @Builder
@@ -35,13 +36,14 @@ public class ProductCreateRequest {
         this.price = price;
     }
 
-    public Product toEntity(final String nextProductNumber) {
-        return Product.builder()
-                .productNumber(nextProductNumber)
+
+
+    public ProductServiceCreateRequest toServiceRequest() {
+        return ProductServiceCreateRequest.builder()
                 .type(type)
                 .sellingStatus(sellingStatus)
-                .name(name)
                 .price(price)
+                .name(name)
                 .build();
     }
 }

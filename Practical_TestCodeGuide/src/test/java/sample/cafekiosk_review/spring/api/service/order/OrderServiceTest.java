@@ -1,4 +1,4 @@
-package sample.cafekiosk_review.spring.domain.api.service.order;
+package sample.cafekiosk_review.spring.api.service.order;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk_review.spring.api.service.order.OrderService;
-import sample.cafekiosk_review.spring.api.service.order.request.OrderCreateRequest;
+import sample.cafekiosk_review.spring.api.controller.order.request.OrderCreateRequest;
+import sample.cafekiosk_review.spring.api.service.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk_review.spring.api.service.order.response.OrderResponse;
 import sample.cafekiosk_review.spring.domain.order.OrderRepository;
 import sample.cafekiosk_review.spring.domain.orderproduct.OrderProductRepository;
@@ -59,7 +60,7 @@ class OrderServiceTest {
         Product product3 = createProduct(HANDMADE, "003", 5000);
         productRepository.saveAll(List.of(product1, product2, product3));
 
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "002"))
                 .build();
 
@@ -94,7 +95,7 @@ class OrderServiceTest {
         Product product3 = createProduct(HANDMADE, "003", 5000);
         productRepository.saveAll(List.of(product1, product2, product3));
 
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "001"))
                 .build();
 
@@ -135,7 +136,7 @@ class OrderServiceTest {
 
 
 
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "001", "002", "003"))
                 .build();
 
@@ -188,7 +189,7 @@ class OrderServiceTest {
 
 
 
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "001", "002", "003"))
                 .build();
 

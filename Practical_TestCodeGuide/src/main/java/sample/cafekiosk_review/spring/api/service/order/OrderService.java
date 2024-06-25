@@ -3,7 +3,8 @@ package sample.cafekiosk_review.spring.api.service.order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sample.cafekiosk_review.spring.api.service.order.request.OrderCreateRequest;
+import sample.cafekiosk_review.spring.api.controller.order.request.OrderCreateRequest;
+import sample.cafekiosk_review.spring.api.service.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk_review.spring.api.service.order.response.OrderResponse;
 import sample.cafekiosk_review.spring.domain.order.Order;
 import sample.cafekiosk_review.spring.domain.order.OrderRepository;
@@ -35,7 +36,7 @@ public class OrderService {
      * DB에 대한 Lock을 잡고 순차적으로 처리한다?
      *
      */
-    public OrderResponse createOrder(final OrderCreateRequest request, LocalDateTime registeredDateTime) {
+    public OrderResponse createOrder(final OrderCreateServiceRequest request, LocalDateTime registeredDateTime) {
         List<String> productNumbers = request.getProductNumbers();
         // Product 조회
         List<Product> products = findProductsBy(productNumbers);

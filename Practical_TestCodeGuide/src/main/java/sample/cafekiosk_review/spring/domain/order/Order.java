@@ -1,6 +1,7 @@
 package sample.cafekiosk_review.spring.domain.order;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sample.cafekiosk_review.spring.domain.orderproduct.OrderProduct;
@@ -34,16 +35,23 @@ public class Order extends BaseEntity {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)      // 주문입장에선 어떤주문들로 이루어졌는지 아는게 좋을 것 같으므로 양방향 관계 서정
     private List<OrderProduct> orderProducts = new ArrayList<>();
 
-    public Order(List<Product> products, LocalDateTime registeredDateTime) {
-        this.orderStatus = OrderStatus.INIT;
+    @Builder
+    private Order(final OrderStatus orderStatus, final LocalDateTime registeredDateTime, final List<Product> products) {
+        this.orderStatus = orderStatus;
         this.totalPrice = calculateTotalPrice(products);
         this.registeredDateTime = registeredDateTime;
         this.orderProducts = products.stream().map(p -> new OrderProduct(this, p)).collect(Collectors.toList());
+
     }
 
 
+
     public static Order create(final List<Product> products, LocalDateTime registeredDateTime) {
-        return new Order(products, registeredDateTime);
+        return Order.builder()
+                .orderStatus(OrderStatus.INIT)
+                .registeredDateTime(registeredDateTime)
+                .products(products)
+                .build();
     }
 
     private static int calculateTotalPrice(final List<Product> products) {

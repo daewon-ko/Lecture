@@ -22,13 +22,13 @@ public class ProductController {
     @PostMapping("/api/v1/product/new")
     public APiResponse<ProductResponse> createProduct(@RequestBody @Valid ProductCreateRequest request) {
 
-        return APiResponse.of(productService.createProduct(request));
+        return APiResponse.ok(productService.createProduct(request.toServiceRequest()));
 
     }
 
     @GetMapping("/api/v1/products/selling")
-    public List<ProductResponse> getSellingProducts() {
-        return productService.getSellingProducts();
+    public APiResponse<List<ProductResponse>> getSellingProducts() {
+        return APiResponse.ok(productService.getSellingProducts());
     }
 
 

@@ -1,4 +1,4 @@
-package sample.cafekiosk_review.spring.api.controller.order.request;
+package sample.cafekiosk_review.spring.api.service.order.request;
 
 
 import lombok.Builder;
@@ -10,12 +10,15 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class OrderCreateRequest {
-    @NotEmpty(message = "상품 번호 리스트는 필수입니다.")
+public class OrderCreateServiceRequest {
+    /**
+     * 모듈 분리시 servic Layer에서 검증이 필요가 없어진다.
+     */
+//    @NotEmpty(message = "상품 번호 리스트는 필수입니다.")
     private List<String> productNumbers;
 
     @Builder
-    private OrderCreateRequest(final List<String> productNumbers) {
+    private OrderCreateServiceRequest(final List<String> productNumbers) {
         this.productNumbers = productNumbers;
     }
 }

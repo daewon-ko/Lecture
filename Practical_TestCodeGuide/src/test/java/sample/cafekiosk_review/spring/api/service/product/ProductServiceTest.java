@@ -1,4 +1,4 @@
-package sample.cafekiosk_review.spring.domain.api.service.product;
+package sample.cafekiosk_review.spring.api.service.product;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk_review.spring.api.controller.product.dto.request.ProductCreateRequest;
+import sample.cafekiosk_review.spring.api.service.order.request.ProductServiceCreateRequest;
 import sample.cafekiosk_review.spring.api.service.product.ProductService;
 import sample.cafekiosk_review.spring.api.service.product.response.ProductResponse;
 import sample.cafekiosk_review.spring.domain.product.Product;
@@ -41,7 +42,7 @@ class ProductServiceTest {
         Product product1 = createProduct("001", HANDMADE, SELLING);
         productRepository.save(product1);
 
-        ProductCreateRequest request = ProductCreateRequest.builder()
+        ProductServiceCreateRequest request = ProductServiceCreateRequest.builder()
                 .type(HANDMADE)
                 .sellingStatus(SELLING)
                 .name("카푸치노")
@@ -73,7 +74,7 @@ class ProductServiceTest {
 
         //given
 
-        ProductCreateRequest request = ProductCreateRequest.builder()
+        ProductServiceCreateRequest request = ProductServiceCreateRequest.builder()
                 .type(HANDMADE)
                 .sellingStatus(SELLING)
                 .name("카푸치노")

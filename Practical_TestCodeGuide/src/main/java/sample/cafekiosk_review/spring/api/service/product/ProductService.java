@@ -2,6 +2,7 @@ package sample.cafekiosk_review.spring.api.service.product;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import sample.cafekiosk_review.spring.api.service.order.request.ProductServiceCreateRequest;
 import sample.cafekiosk_review.spring.api.service.product.response.ProductResponse;
 import sample.cafekiosk_review.spring.api.controller.product.dto.request.ProductCreateRequest;
 import sample.cafekiosk_review.spring.domain.product.Product;
@@ -26,7 +27,7 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     // 동시성 이슈 발생 가능
-    public ProductResponse createProduct(final ProductCreateRequest request) {
+    public ProductResponse createProduct(final ProductServiceCreateRequest request) {
         //productNumber 부여
         // 001 002 003
         // DB에서 마지막 저장된 Product의 상품번호를 읽어와서 +1
