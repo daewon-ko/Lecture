@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import sample.cafekiosk_review.spring.IntegrationTestSupport;
 import sample.cafekiosk_review.spring.api.service.order.OrderService;
 import sample.cafekiosk_review.spring.api.controller.order.request.OrderCreateRequest;
 import sample.cafekiosk_review.spring.api.service.order.request.OrderCreateServiceRequest;
@@ -25,11 +26,10 @@ import static org.assertj.core.api.Assertions.*;
 import static sample.cafekiosk_review.spring.domain.product.ProductSellingStatus.*;
 import static sample.cafekiosk_review.spring.domain.product.ProductType.*;
 
-@ActiveProfiles("test")
-@SpringBootTest
+
 //@Transactional
 //@DataJpaTest
-class OrderServiceTest {
+class OrderServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderService orderService;
@@ -182,9 +182,9 @@ class OrderServiceTest {
         productRepository.saveAll(List.of(product1, product2, product3));
 
 
-        Stock stock1 = Stock.create("001", 2);
+        Stock stock1 = Stock.create("001", 1);
         Stock stock2 = Stock.create("002", 2);
-        stock1.deductQuantity(1); // todo
+//        stock1.deductQuantity(1); // todo
         stockRepository.saveAll(List.of(stock1, stock2));
 
 

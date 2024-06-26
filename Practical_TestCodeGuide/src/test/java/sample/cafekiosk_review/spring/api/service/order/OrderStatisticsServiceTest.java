@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import sample.cafekiosk_review.spring.IntegrationTestSupport;
 import sample.cafekiosk_review.spring.client.mail.MailSendClient;
 import sample.cafekiosk_review.spring.domain.history.mail.MailSendHistory;
 import sample.cafekiosk_review.spring.domain.history.mail.MailSendHistoryRepository;
@@ -30,33 +31,12 @@ import static org.mockito.Mockito.*;
 import static sample.cafekiosk_review.spring.domain.product.ProductSellingStatus.SELLING;
 import static sample.cafekiosk_review.spring.domain.product.ProductType.*;
 
-@SpringBootTest
-class OrderStatisticsServiceTest {
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
     @Autowired
     private OrderStatisticsService orderStatisticsService;
 
     @Autowired
     private OrderRepository orderRepository;
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private OrderProductRepository orderProductRepository;
-
-    @Autowired
-    private MailSendHistoryRepository mailSendHistoryRepository;
-
-    @MockBean
-    private MailSendClient mailSendClient;
-
-
-    @AfterEach
-    void tearDown() {
-        orderProductRepository.deleteAllInBatch();
-        orderRepository.deleteAllInBatch();
-        productRepository.deleteAllInBatch();
-        mailSendHistoryRepository.deleteAllInBatch();
-    }
-
     @DisplayName("결제 완료 주문들을 조회하여 매출 통계 메일을 전송한다.")
     @Test
     void sendOrderStatisticsMail() {
@@ -93,6 +73,25 @@ class OrderStatisticsServiceTest {
                 .contains("총 매출 합계는 12000원입니다.");
 
 
+    }
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private OrderProductRepository orderProductRepository;
+
+    @Autowired
+    private MailSendHistoryRepository mailSendHistoryRepository;
+
+
+
+
+    @AfterEach
+    void tearDown() {
+        orderProductRepository.deleteAllInBatch();
+        orderRepository.deleteAllInBatch();
+        productRepository.deleteAllInBatch();
+        mailSendHistoryRepository.deleteAllInBatch();
     }
 
     private Order createPaymentCompletedOrder(final List<Product> products, final LocalDateTime now) {

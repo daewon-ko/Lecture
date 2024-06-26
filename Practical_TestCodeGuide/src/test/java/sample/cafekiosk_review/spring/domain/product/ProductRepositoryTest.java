@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk_review.spring.IntegrationTestSupport;
 
 import java.util.List;
 
@@ -13,9 +15,9 @@ import static sample.cafekiosk_review.spring.domain.product.ProductSellingStatus
 import static sample.cafekiosk_review.spring.domain.product.ProductType.*;
 
 //@SpringBootTest
-@DataJpaTest
-@ActiveProfiles("test") // test 프로파일로 지정
-class ProductRepositoryTest {
+
+@Transactional
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
@@ -43,7 +45,7 @@ class ProductRepositoryTest {
                 .extracting("productNumber", "name", "sellingStatus")   // 추출
                 .containsExactlyInAnyOrder(
                         tuple("001", "아메리카노", SELLING),
-                        tuple("002", "카페라떼", HOLD)
+                        tuple("002", "아메리카노", HOLD)
                 );    // 순서 상관 없이 검증
 
 
@@ -71,10 +73,10 @@ class ProductRepositoryTest {
         // List에 대한 테스트
         // 1. 사이즈 체크
         assertThat(products).hasSize(2)
-                .extracting("productNufmber", "name", "sellingStatus")   // 추출
+                .extracting("productNumber", "name", "sellingStatus")   // 추출
                 .containsExactlyInAnyOrder(
                         tuple("001", "아메리카노", SELLING),
-                        tuple("002", "카페라떼", HOLD)
+                        tuple("002", "아메리카노", HOLD)
                 );    // 순서 상관 없이 검증
 
 

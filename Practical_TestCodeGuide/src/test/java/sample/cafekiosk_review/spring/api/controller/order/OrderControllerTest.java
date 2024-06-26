@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import sample.cafekiosk_review.spring.ControllerTestSupport;
 import sample.cafekiosk_review.spring.api.service.order.OrderService;
 import sample.cafekiosk_review.spring.api.controller.order.request.OrderCreateRequest;
 
@@ -18,17 +19,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = OrderController.class)
-class OrderControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+class OrderControllerTest extends ControllerTestSupport {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @MockBean
-    private OrderService orderService;
 
 
     @DisplayName("신규 주문을 등록한다.")
