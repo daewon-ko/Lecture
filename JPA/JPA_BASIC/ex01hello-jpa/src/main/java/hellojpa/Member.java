@@ -4,23 +4,27 @@ import jakarta.persistence.*;
 
 @Entity
 @SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
-public class Member extends BaseEntity{
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
     private Long id;
     @Column(name = "USERNAME")
     private String userName;
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(final Team team) {
+        this.team = team;
+    }
+
     //    @Column(name = "TEAM_ID")
 //    private Long teamId;
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID", updatable = false, insertable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
 
     public Long getId() {
         return id;
@@ -34,15 +38,15 @@ public class Member extends BaseEntity{
         return userName;
     }
 
+
     public void setUserName(final String userName) {
         this.userName = userName;
     }
-
 //    public Team getTeam() {
 //        return team;
-//    }
 //
 //    public void changeTeam(final Team team) {
+//    }
 //        this.team = team;
 //        team.getMembers().add(this);
 //    }

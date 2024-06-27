@@ -15,8 +15,8 @@ public class Team extends BaseEntity{
     private String name;
 
 
-    @OneToMany
-    @JoinColumn(name = "TEAM_ID")
+    @OneToMany(mappedBy = "team")
+//    @JoinColumn(name = "TEAM_ID")
     /**
      * add할때 NPE 피하기 위해 new ArrayList로 할당해주는 것이 일종의 관례
      */
