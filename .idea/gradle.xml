@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Practical_TestCodeGuide" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Practical_TestCodeGuide" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/Advanced/advance" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/Advanced/advance" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/Advanced/proxy" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/Advanced/proxy" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/Basic/core" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/Basic/core" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/JPA1" />
+        <option name="gradleJvm" value="corretto-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/JPA1" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/JPA_Basic" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/JPA_Basic" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC1/item-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC1/item-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC1/servlet" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC1/servlet" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC1/springmvc" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC1/springmvc" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC2/exception" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC2/exception" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC2/form" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC2/form" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC2/message" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC2/message" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC2/thymeleaf-basic" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC2/thymeleaf-basic" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC2/thymeleaf-basic-review" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC2/thymeleaf-basic-review" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC2/typeconverter" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC2/typeconverter" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Spring/MVC2/upload" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Spring/MVC2/upload" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection2" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection2" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection3" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection3" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection4" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection4" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection5" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection5" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection6" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection6" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecuritybasic" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Udemy/SpringSecurity/springsecuritybasic" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

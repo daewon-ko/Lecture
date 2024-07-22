@@ -1,6 +1,9 @@
 package hellojpa;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
@@ -17,31 +20,14 @@ public class JpaMain {
 
         try {
 
-
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
-
-
-            Member member1 = new Member();
-            member1.setUserName("member1");
-            member1.setTeam(team);
-
-            em.persist(member1);
-
-            em.flush();
-            em.clear();
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Member> query = cb.createQuery(Member.class);
+            Root<Member> m = query.from(Member.class);
+            CriteriaQuery<Member> cq = query.select(m).where(cb.equal(m.get("username"), "kim"));
+            List<Member> resultList = em.createQuery(cq).getResultList();
 
 
-            Member findMember = em.find(Member.class, member1.getId());
-            System.out.println("member1.getTeam().getClass() = " + findMember.getTeam().getClass());
-
-
-
-
-//
             tx.commit();
-
         } catch (Exception e) {
             tx.rollback();
         } finally {

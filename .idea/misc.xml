@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/Spring/JPA1" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring/MVC1/item-service" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring/MVC1/servlet" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring/MVC1/springmvc" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring/MVC2/exception" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring/MVC2/thymeleaf-basic" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring/MVC2/typeconverter" />
+    <file type="web" url="file://$PROJECT_DIR$/Spring/MVC2/upload" />
+    <file type="web" url="file://$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection2" />
+    <file type="web" url="file://$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection3" />
+    <file type="web" url="file://$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection4" />
+    <file type="web" url="file://$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection5" />
+    <file type="web" url="file://$PROJECT_DIR$/Udemy/SpringSecurity/springsecsection6" />
+    <file type="web" url="file://$PROJECT_DIR$/Udemy/SpringSecurity/springsecuritybasic" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/JPA/JPA_BASIC/ex01hello-jpa/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="corretto-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
