@@ -3,13 +3,17 @@ package hellojpa;
 import jakarta.persistence.*;
 
 @Entity
-@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
+//@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
 public class Member extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "USERNAME")
     private String userName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     public Team getTeam() {
         return team;
@@ -18,12 +22,6 @@ public class Member extends BaseEntity {
     public void setTeam(final Team team) {
         this.team = team;
     }
-
-    //    @Column(name = "TEAM_ID")
-//    private Long teamId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
 
 
     public Long getId() {
@@ -53,4 +51,6 @@ public class Member extends BaseEntity {
 
     public Member() {
     }
+
+
 }

@@ -1,5 +1,6 @@
 package sample.cafekiosk_review.spring.api.service.product;
 
+import org.apache.tomcat.util.http.fileupload.MultipartStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

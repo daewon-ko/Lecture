@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductTypeTest {
+class
+ProductTypeTest {
     @DisplayName("상품 타입이 재고 관련 타입인지를 체크한다.")
     @Test
     void containsStockType() {
