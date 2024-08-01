@@ -1,4 +1,4 @@
-package com.example.stock.service;
+package com.example.stock.facade;
 
 import com.example.stock.domain.Stock;
 import com.example.stock.repository.StockRepository;
@@ -16,10 +16,9 @@ import java.util.concurrent.Executors;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class StockServiceTest {
-
+class NamedLockStockFacadeTest {
     @Autowired
-    private PessimisticLockStockService stockService;
+    private NamedLockStockFacade namedLockStockFacade;
 
     @Autowired
     private StockRepository stockRepository;
@@ -36,18 +35,6 @@ class StockServiceTest {
     }
 
 
-    @DisplayName("재고감소")
-    @Test
-    void 재고감소() {
-        //given, when
-        stockService.decrease(1l, 1L);
-
-        Stock stock = stockRepository.findById(1L).orElseThrow();
-
-        //then
-        assertEquals(99, stock.getQuantity());
-    }
-
     @DisplayName("동시에 여러 개의 요청")
     @Test
     void test() throws InterruptedException {
@@ -60,9 +47,9 @@ class StockServiceTest {
 
         for (int i = 0; i < threadCount; i++) {
             executorService.submit(() -> {
-                try{
-                    stockService.decrease(1L, 1L);
-                }finally {
+                try {
+                    namedLockStockFacade.decrease(1L, 1L);
+                } finally {
                     countDownLatch.countDown();
 
                 }
@@ -77,4 +64,6 @@ class StockServiceTest {
         assertEquals(0, stock.getQuantity());
 
     }
+
+
 }
