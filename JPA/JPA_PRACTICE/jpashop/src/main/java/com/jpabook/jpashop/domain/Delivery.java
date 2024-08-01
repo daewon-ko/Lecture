@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class Delivery {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
