@@ -25,7 +25,6 @@ public class OrderItem {
     private Item item;
 
     private int count;
-
     private int orderPrice;
 
     // 생성메서드
