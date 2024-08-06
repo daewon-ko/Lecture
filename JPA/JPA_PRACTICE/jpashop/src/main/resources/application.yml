@@ -12,7 +12,8 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-#logging.level:
+        default_batch_fetch_size: 100
+  #logging.level:
 #  org.hibernate.SQL: debug
 # org.hibernate.type: trace #??? ?? 2.x, hibernate5
   #??? ?? 3.x, hibernate6

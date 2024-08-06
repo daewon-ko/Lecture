@@ -27,9 +27,7 @@ public class OrderRepository {
     //     동적쿼리 조회
 
     /**
-     *
      * QUERYDSL 필요
-     *
      */
     public List<Order> findAll(OrderSearch orderSearch) {
 
@@ -115,9 +113,27 @@ public class OrderRepository {
 
     public List<Order> findAllWithMemberDelivery() {
 
-        return  em.createQuery("select o from Order o join fetch o.member" +
+        return em.createQuery("select o from Order o join fetch o.member" +
                 " join fetch o.delivery", Order.class).getResultList();
     }
 
 
+    public List<Order> findAllWithItem() {
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.orderItems oi" +
+                        " join fetch oi.item i ", Order.class
+        ).getResultList();
+
+    }
+
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery("select o from Order o " +
+                " join fetch o.member" +
+                " join fetch o.delivery", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
 }

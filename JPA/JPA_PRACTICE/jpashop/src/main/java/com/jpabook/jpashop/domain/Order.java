@@ -3,6 +3,8 @@ package com.jpabook.jpashop.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
+import org.springframework.boot.autoconfigure.batch.BatchDataSource;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class Order {
     private OrderStatus orderStatus;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @BatchSize(size = 100)
     private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
     public void setMember(Member member) {
