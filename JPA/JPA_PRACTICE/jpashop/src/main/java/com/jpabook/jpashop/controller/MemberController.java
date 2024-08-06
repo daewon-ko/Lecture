@@ -2,7 +2,7 @@ package com.jpabook.jpashop.controller;
 
 import com.jpabook.jpashop.domain.Address;
 import com.jpabook.jpashop.domain.Member;
-import com.jpabook.jpashop.repository.MemberRepository;
+import com.jpabook.jpashop.repository.MemberRepositoryOld;
 import com.jpabook.jpashop.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
-    private final MemberRepository memberRepository;
+    private final MemberRepositoryOld memberRepositoryOld;
 
     @GetMapping("/members/new")
     public String createForm(Model model) {

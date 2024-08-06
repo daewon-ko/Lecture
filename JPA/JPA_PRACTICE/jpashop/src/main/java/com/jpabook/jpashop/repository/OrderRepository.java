@@ -1,6 +1,11 @@
 package com.jpabook.jpashop.repository;
 
 import com.jpabook.jpashop.domain.Order;
+import com.jpabook.jpashop.domain.OrderStatus;
+import com.jpabook.jpashop.domain.QMember;
+import com.jpabook.jpashop.domain.QOrder;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
@@ -11,10 +16,18 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.jpabook.jpashop.domain.QMember.member;
+import static com.jpabook.jpashop.domain.QOrder.order;
+
 @Repository
-@RequiredArgsConstructor
 public class OrderRepository {
     private final EntityManager em;
+    private final JPAQueryFactory queryFactory;
+
+    public OrderRepository(EntityManager em) {
+        this.em = em;
+        queryFactory = new JPAQueryFactory(em);
+    }
 
     public void save(Order order) {
         em.persist(order);
@@ -29,19 +42,17 @@ public class OrderRepository {
     /**
      * QUERYDSL 필요
      */
-    public List<Order> findAll(OrderSearch orderSearch) {
-
-        String jpql = "select o from Order o join o.member m where o.orderStatus = :status" +
-                " and m.name like :name ";
-        return em.createQuery(jpql, Order.class)
-                .setParameter("status", orderSearch.getOrderStatus())
-                .setParameter("name", orderSearch.getMemberName())
-                .setMaxResults(1000)    // 최대 1000건 조회
-                .getResultList();
-
-    }
-
-
+//    public List<Order> findAll(OrderSearch orderSearch) {
+//
+//        String jpql = "select o from Order o join o.member m where o.orderStatus = :status" +
+//                " and m.name like :name ";
+//        return em.createQuery(jpql, Order.class)
+//                .setParameter("status", orderSearch.getOrderStatus())
+//                .setParameter("name", orderSearch.getMemberName())
+//                .setMaxResults(1000)    // 최대 1000건 조회
+//                .getResultList();
+//
+//    }
     public List<Order> findAllByString(OrderSearch orderSearch) {
 
         String jpql = "select o from Order o join o.member m";
@@ -128,10 +139,38 @@ public class OrderRepository {
 
     }
 
+
+    public List<Order> findAll(OrderSearch orderSearch) {
+
+        return queryFactory.query()
+                .select(order)
+                .from(order)
+                .join(order.member, member)
+                .where(statusEq(orderSearch.getOrderStatus()), nameLike(orderSearch.getMemberName()))
+                .limit(1000)
+                .fetch();
+
+    }
+
+    private static BooleanExpression nameLike(String memberName) {
+        if (!StringUtils.hasText(memberName)) {
+            return null;
+        }
+        return member.name.like(memberName);
+    }
+
+    private BooleanExpression statusEq(OrderStatus orderStatus) {
+        if (orderStatus == null) {
+            return null;
+        }
+        return order.orderStatus.eq(orderStatus);
+    }
+
+
     public List<Order> findAllWithMemberDelivery(int offset, int limit) {
         return em.createQuery("select o from Order o " +
-                " join fetch o.member" +
-                " join fetch o.delivery", Order.class)
+                        " join fetch o.member" +
+                        " join fetch o.delivery", Order.class)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
