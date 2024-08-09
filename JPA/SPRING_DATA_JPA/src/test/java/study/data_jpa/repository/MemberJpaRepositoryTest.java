@@ -20,7 +20,7 @@ class MemberJpaRepositoryTest {
     @Autowired
     MemberJpaRepository memberJpaRepository;
     @Autowired
-    private MemberRepository memberRepository;
+    private MemberRepository memberrepository;
 
     @DisplayName("")
     @Test
@@ -30,7 +30,7 @@ class MemberJpaRepositoryTest {
 
 
         //when
-        Member savedMember = memberJpaRepository.save(member);
+        Member savedMember = memberrepository.save(member);
         Member findMember = memberJpaRepository.find(savedMember.getId());
         //then
 
@@ -48,17 +48,17 @@ class MemberJpaRepositoryTest {
         Member member1 = new Member("member1");
         Member member2 = new Member("member2");
 
-        memberJpaRepository.save(member1);
-        memberJpaRepository.save(member2);
+        memberrepository.save(member1);
+        memberrepository.save(member2);
 
         //when
 
-        Member findMember1 = memberJpaRepository.findById(member1.getId()).get();
-        Member findMember2 = memberJpaRepository.findById(member2.getId()).get();
+        Member findMember1 = memberrepository.findById(member1.getId()).get();
+        Member findMember2 = memberrepository.findById(member2.getId()).get();
 
-        List<Member> all = memberJpaRepository.findAll();
+        List<Member> all = memberrepository.findAll();
 
-        long count = memberJpaRepository.count();
+        long count = memberrepository.count();
 
         //then
         assertThat(findMember1).isEqualTo(member1);
@@ -72,10 +72,10 @@ class MemberJpaRepositoryTest {
 
 
         //삭제검증
-        memberJpaRepository.delete(member1);
-        memberJpaRepository.delete(member2);
+        memberrepository.delete(member1);
+        memberrepository.delete(member2);
 
-        long deletedCount = memberJpaRepository.count();
+        long deletedCount = memberrepository.count();
         assertThat(deletedCount).isEqualTo(0);
 
 
@@ -93,8 +93,8 @@ class MemberJpaRepositoryTest {
 
         //when
 
-        memberJpaRepository.save(m1);
-        memberJpaRepository.save(m2);
+        memberrepository.save(m1);
+        memberrepository.save(m2);
 
 
         //then
@@ -106,5 +106,88 @@ class MemberJpaRepositoryTest {
         assertThat(result.get(0).getUsername()).isEqualTo("AAA");
     }
 
+    @DisplayName("")
+    @Test
+    void testIn() {
+        //given
 
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("AAA", 20);
+
+        memberrepository.save(m1);
+        memberrepository.save(m2);
+        //when
+        List<Member> result = memberrepository.findByNames(List.of("AAA", "BBB"));
+
+        //then
+        for (Member member : result) {
+            System.out.println("member = " + member);
+        }
+
+    }
+
+    @DisplayName("")
+    @Test
+    void returnType() {
+        //given
+
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("AAA", 20);
+
+        memberrepository.save(m1);
+        memberrepository.save(m2);
+        //when
+        List<Member> aaa = memberrepository.findListByUsername("AAA");
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void paging() {
+        //given
+        memberrepository.save(new Member("member1", 10));
+        memberrepository.save(new Member("member2", 10));
+        memberrepository.save(new Member("member3", 10));
+        memberrepository.save(new Member("member4", 10));
+        memberrepository.save(new Member("member5", 10));
+
+        //when
+        int age = 10;
+
+        int offset = 1;
+        int limit = 3;
+
+
+        //then
+        List<Member> members = memberJpaRepository.findByPage(age, offset, limit);
+        long totalCount = memberJpaRepository.totalCount(age);
+
+        assertThat(members.size()).isEqualTo(3);
+        assertThat(totalCount).isEqualTo(5);
+
+    }
+
+
+    @DisplayName("")
+    @Test
+    void bulkUpdate
+            () {
+
+        //given
+        memberrepository.save(new Member("member1", 10));
+        memberrepository.save(new Member("member2", 19));
+        memberrepository.save(new Member("member3", 20));
+        memberrepository.save(new Member("member4", 21));
+        memberrepository.save(new Member("member5", 40));
+
+        //when
+        int resultCount = memberJpaRepository.bulkAgePlus(20);
+
+        //then
+        assertThat(resultCount).isEqualTo(3);
+
+
+    }
 }

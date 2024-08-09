@@ -7,17 +7,13 @@ import study.data_jpa.entity.Team;
 public class MemberDto {
     private Long id;
     private String username;
-    private Team team;
+    private String teamName;
 
-    public MemberDto(Long id, String username, Team team) {
+    public MemberDto(Long id, String username, String teamName) {
         this.id = id;
         this.username = username;
-        this.team = team;
+        this.teamName = teamName;
     }
 
 
-    public MemberDto(Long id, String username) {
-        this.id = id;
-        this.username = username;
-    }
 }
