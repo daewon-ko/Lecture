@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import sample.cafekiosk_review.spring.ControllerTestSupport;
 import sample.cafekiosk_review.spring.api.controller.product.ProductController;
 import sample.cafekiosk_review.spring.api.controller.product.dto.request.ProductCreateRequest;
@@ -38,7 +39,7 @@ class ProductControllerTest extends ControllerTestSupport {
                 .price(4000)
                 .build();
         //when // then
-        mockMvc.perform
+        ResultActions resultActions = mockMvc.perform
                         (post("/api/v1/product/new")
                                 .content(objectMapper.writeValueAsString(request))
                                 .contentType(MediaType.APPLICATION_JSON)
@@ -65,7 +66,7 @@ class ProductControllerTest extends ControllerTestSupport {
                         ).andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value("400"))
-                .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
+                .andExpect(jsonPath("$.tus").value("BAD_REQUEST"))
                 .andExpect(jsonPath("$.message").value("상품 타입은 필수입니다."))
                 .andExpect(jsonPath("$.data").isEmpty());
 
