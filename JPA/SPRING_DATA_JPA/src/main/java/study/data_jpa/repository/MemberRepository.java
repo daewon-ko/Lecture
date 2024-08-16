@@ -4,6 +4,7 @@ package study.data_jpa.repository;
 import jakarta.persistence.Entity;
 import jakarta.persistence.LockModeType;
 import jakarta.persistence.QueryHint;
+import org.apache.catalina.User;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +15,7 @@ import study.data_jpa.entity.Member;
 import java.util.List;
 import java.util.Optional;
 
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface MemberRepository extends JpaRepository<Member, Long> , MemberRepositoryCustom{
 
     @Query(name = "Member.findByUsername")
     List<Member> findByUsername(@Param("username") String username);
@@ -46,9 +47,9 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("update Member m set m.age = m.age +1 where m.age >=:age")
     int bulkAgePlus(@Param("age") int age);
 
-
     @Query("select m from Member m left join fetch m.team")
     List<Member> findMemberFetchJoin();
+
 
 
     @Override
@@ -64,4 +65,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     List<Member> findLockByUsername(String username);
+
+    <T> List<T> findProjectionsByUsername(@Param("username") String username, Class<T> type);
 }

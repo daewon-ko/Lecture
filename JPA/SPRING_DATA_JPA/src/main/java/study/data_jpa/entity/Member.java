@@ -6,14 +6,13 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id", "username", "age"})
 @NamedQuery(
         name = "Member.findByUsername",
         query = "select m from Member m where m.username =:username")
 @NamedEntityGraph(name = "Member.all", attributeNodes = @NamedAttributeNode("team"))
-public class Member {
+public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue
@@ -33,6 +32,9 @@ public class Member {
         if (team != null) {
             changeTeam(team);
         }
+    }
+    public void changeUserName(String username) {
+        this.username = username;
     }
 
     public Member(String username, int age) {
