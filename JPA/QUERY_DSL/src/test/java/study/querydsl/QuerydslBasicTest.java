@@ -1,8 +1,12 @@
 package study.querydsl;
 
 import com.querydsl.core.Tuple;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceUnit;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,6 +21,7 @@ import study.querydsl.entity.Team;
 
 import java.util.List;
 
+import static com.querydsl.jpa.JPAExpressions.*;
 import static org.assertj.core.api.Assertions.*;
 import static study.querydsl.entity.QMember.*;
 import static study.querydsl.entity.QTeam.team;
@@ -27,6 +32,8 @@ public class QuerydslBasicTest {
     @Autowired
     private EntityManager em;
     private JPAQueryFactory queryFactory;
+    @PersistenceUnit
+    EntityManagerFactory emf;
 
     @BeforeEach
     public void before() {
@@ -250,7 +257,211 @@ public class QuerydslBasicTest {
                 .groupBy(team.name)
                 .fetch();
         //when
-        Tuple tuple = result.get(0);
+        Tuple teamA = result.get(0);
+        Tuple teamB = result.get(1);
+        //then
+
+        assertThat(teamA.get(team.name)).isEqualTo("teamA");
+        assertThat(teamA.get(member.age.avg())).isEqualTo(15);
+        assertThat(teamB.get(team.name)).isEqualTo("teamB");
+        assertThat(teamB.get(member.age.avg())).isEqualTo(35);
+
+
+    }
+
+    @DisplayName("")
+    @Test
+    void join() {
+        //given
+        QMember member = QMember.member;
+        QTeam team = QTeam.team;
+
+        //when
+        List<Member> members = queryFactory
+                .selectFrom(member)
+                .join(member.team, team)
+                .where(team.name.eq("teamA"))
+                .fetch();
+
+        assertThat(members).extracting("username")
+                .containsExactly("member1", "member2");
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void join_on_filtering() {
+
+        //given
+
+
+        //when
+        List<Tuple> result = queryFactory
+                .select(member, team)
+                .from(member)
+                .leftJoin(member.team, team)
+                .on(team.name.eq("teamA"))
+                .fetch();
+
+        //then
+
+        for (Tuple tuple : result) {
+            System.out.println("tuple = " + tuple);
+        }
+
+    }
+
+    @DisplayName("")
+    @Test
+    void join_on_no_relation() {
+
+        //given
+        em.persist(new Member("teamA"));
+        em.persist(new Member("teamB"));
+
+        //when
+        List<Tuple> result = queryFactory
+                .select(member, team)
+                .from(member)
+                .leftJoin(team)
+                .on(team.name.eq(member.username))
+                .fetch();
+        for (Tuple tuple : result) {
+            System.out.println("tuple = " + tuple);
+        }
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void fetch_join_no() {
+        em.flush();
+        em.clear();
+        //given
+        Member member1 = queryFactory
+                .selectFrom(member)
+                .where(member.username.eq("member1"))
+                .fetchOne();
+
+        boolean isLoaded = emf.getPersistenceUnitUtil().isLoaded(member1.getTeam());
+        assertThat(isLoaded).isFalse();
+        //when
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void fetchJoinUse() {
+        em.flush();
+        em.clear();
+        //given
+        Member findMember = queryFactory
+                .selectFrom(member)
+                .join(member.team, team).fetchJoin()
+                .where(member.username.eq("member1"))
+                .fetchOne();
+
+        boolean isLoaded = emf.getPersistenceUnitUtil().isLoaded(findMember.getTeam());
+        assertThat(isLoaded).isTrue();
+
+
+        //when
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void subQuery
+            () {
+
+        //given
+        QMember memberSub = new QMember("memberSub");
+
+        List<Member> result = queryFactory
+                .selectFrom(member)
+                .where(member.age.eq(
+                        select(memberSub.age.max())
+                                .from(memberSub)
+                )).fetch();
+
+        //when, then
+        assertThat(result).extracting("age")
+                .containsExactly(40);
+
+
+    }
+
+    @DisplayName("")
+    @Test
+    void
+    subQuery_goe() {
+        //given
+        QMember memberSub = new QMember("memberSub");
+
+        //when, then
+        List<Member> result = queryFactory
+                .selectFrom(member)
+                .where(member.age.goe(
+                        select(memberSub.age.avg())
+                                .from(memberSub)
+                )).fetch();
+
+        assertThat(result).extracting("age")
+                .containsExactly(30, 40);
+
+    }
+
+    @DisplayName("")
+    @Test
+    void subQuery_In() {
+        //given
+        QMember memberSub = new QMember("memberSub");
+
+        //when
+        List<Member> result = queryFactory
+                .selectFrom(member)
+                .where(member.age.in(
+                        select(memberSub.age)
+                                .from(memberSub)
+                                .where(memberSub.age.gt(10))
+                )).fetch();
+
+        assertThat(result).extracting("age")
+                .containsExactly(20, 30, 40);
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void subquery_select() {
+        QMember memberSub = new QMember("memberSub");
+
+        //given
+        List<Tuple> result = queryFactory
+                .select(member.username,
+                        select(memberSub.age.avg())
+                                .from(memberSub))
+                .from(member)
+                .fetch();
+
+        for (Tuple tuple : result) {
+            System.out.println("username = " + tuple.get(member.username));
+            System.out.println("age = " + tuple.get(select(memberSub.age.avg()).from(memberSub)));
+        }
+
+
+        //when
+
         //then
 
     }
