@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="study.querydsl.QuerydslBasicTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-20T06:24:06" hostname="godaewon-ui-MacBookPro-2.local" time="0.513">
+  <properties/>
+  <testcase name="aggregation()" classname="study.querydsl.QuerydslBasicTest" time="0.513"/>
+  <system-out><![CDATA[15:24:05.027 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [study.querydsl.QuerydslBasicTest]: QuerydslBasicTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:24:05.061 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration study.querydsl.QuerydslApplication for test class study.querydsl.QuerydslBasicTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.8)
+
+2024-08-20T15:24:05.212+09:00  INFO 3795 --- [    Test worker] study.querydsl.QuerydslBasicTest         : Starting QuerydslBasicTest using Java 17.0.12 with PID 3795 (started by daewon in /Users/daewon/Study/Lecture/JPA/QUERYDSL)
+2024-08-20T15:24:05.212+09:00  INFO 3795 --- [    Test worker] study.querydsl.QuerydslBasicTest         : No active profile set, falling back to 1 default profile: "default"
+2024-08-20T15:24:05.438+09:00  INFO 3795 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-20T15:24:05.446+09:00  INFO 3795 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+2024-08-20T15:24:05.628+09:00  INFO 3795 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-20T15:24:05.647+09:00  INFO 3795 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.9.Final
+2024-08-20T15:24:05.660+09:00  INFO 3795 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-20T15:24:05.742+09:00  INFO 3795 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-20T15:24:05.751+09:00  INFO 3795 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-20T15:24:05.783+09:00  INFO 3795 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:tcp://localhost/~/querydsl user=SA
+2024-08-20T15:24:05.784+09:00  INFO 3795 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-20T15:24:05.876+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135045876 | took 3ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/querydsl
+select * from INFORMATION_SCHEMA.SEQUENCES
+select * from INFORMATION_SCHEMA.SEQUENCES;
+2024-08-20T15:24:06.126+09:00  INFO 3795 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-20T15:24:06.131+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists hello cascade 
+Hibernate: 
+    drop table if exists hello cascade 
+2024-08-20T15:24:06.133+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046133 | took 1ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/querydsl
+
+    drop table if exists hello cascade 
+
+    drop table if exists hello cascade ;
+2024-08-20T15:24:06.133+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists member cascade 
+Hibernate: 
+    drop table if exists member cascade 
+2024-08-20T15:24:06.134+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046134 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/querydsl
+
+    drop table if exists member cascade 
+
+    drop table if exists member cascade ;
+2024-08-20T15:24:06.134+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists team cascade 
+Hibernate: 
+    drop table if exists team cascade 
+2024-08-20T15:24:06.134+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046134 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/querydsl
+
+    drop table if exists team cascade 
+
+    drop table if exists team cascade ;
+2024-08-20T15:24:06.134+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    drop sequence if exists hello_seq
+Hibernate: 
+    drop sequence if exists hello_seq
+2024-08-20T15:24:06.135+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046135 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/querydsl
+
+    drop sequence if exists hello_seq
+
+    drop sequence if exists hello_seq;
+2024-08-20T15:24:06.135+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    drop sequence if exists member_seq
+Hibernate: 
+    drop sequence if exists member_seq
+2024-08-20T15:24:06.135+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046135 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/querydsl
+
+    drop sequence if exists member_seq
+
+    drop sequence if exists member_seq;
+2024-08-20T15:24:06.135+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    drop sequence if exists team_seq
+Hibernate: 
+    drop sequence if exists team_seq
+2024-08-20T15:24:06.136+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046136 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/querydsl
+
+    drop sequence if exists team_seq
+
+    drop sequence if exists team_seq;
+2024-08-20T15:24:06.138+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    create sequence hello_seq start with 1 increment by 50
+Hibernate: 
+    create sequence hello_seq start with 1 increment by 50
+2024-08-20T15:24:06.138+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046138 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/querydsl
+
+    create sequence hello_seq start with 1 increment by 50
+
+    create sequence hello_seq start with 1 increment by 50;
+2024-08-20T15:24:06.138+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    create sequence member_seq start with 1 increment by 50
+Hibernate: 
+    create sequence member_seq start with 1 increment by 50
+2024-08-20T15:24:06.139+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046139 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/querydsl
+
+    create sequence member_seq start with 1 increment by 50
+
+    create sequence member_seq start with 1 increment by 50;
+2024-08-20T15:24:06.139+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    create sequence team_seq start with 1 increment by 50
+Hibernate: 
+    create sequence team_seq start with 1 increment by 50
+2024-08-20T15:24:06.140+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046140 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/querydsl
+
+    create sequence team_seq start with 1 increment by 50
+
+    create sequence team_seq start with 1 increment by 50;
+2024-08-20T15:24:06.140+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    create table hello (
+        id bigint not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table hello (
+        id bigint not null,
+        primary key (id)
+    )
+2024-08-20T15:24:06.141+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046141 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/querydsl
+
+    create table hello (
+        id bigint not null,
+        primary key (id)
+    )
+
+    create table hello (
+        id bigint not null,
+        primary key (id)
+    );
+2024-08-20T15:24:06.141+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    create table member (
+        age integer not null,
+        id bigint not null,
+        team_id bigint,
+        username varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table member (
+        age integer not null,
+        id bigint not null,
+        team_id bigint,
+        username varchar(255),
+        primary key (id)
+    )
+2024-08-20T15:24:06.142+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046142 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/querydsl
+
+    create table member (
+        age integer not null,
+        id bigint not null,
+        team_id bigint,
+        username varchar(255),
+        primary key (id)
+    )
+
+    create table member (
+        age integer not null,
+        id bigint not null,
+        team_id bigint,
+        username varchar(255),
+        primary key (id)
+    );
+2024-08-20T15:24:06.143+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    create table team (
+        team_id bigint not null,
+        name varchar(255),
+        primary key (team_id)
+    )
+Hibernate: 
+    create table team (
+        team_id bigint not null,
+        name varchar(255),
+        primary key (team_id)
+    )
+2024-08-20T15:24:06.143+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046143 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/querydsl
+
+    create table team (
+        team_id bigint not null,
+        name varchar(255),
+        primary key (team_id)
+    )
+
+    create table team (
+        team_id bigint not null,
+        name varchar(255),
+        primary key (team_id)
+    );
+2024-08-20T15:24:06.144+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    alter table if exists member 
+       add constraint FKcjte2jn9pvo9ud2hyfgwcja0k 
+       foreign key (team_id) 
+       references team
+Hibernate: 
+    alter table if exists member 
+       add constraint FKcjte2jn9pvo9ud2hyfgwcja0k 
+       foreign key (team_id) 
+       references team
+2024-08-20T15:24:06.145+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046145 | took 1ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/querydsl
+
+    alter table if exists member 
+       add constraint FKcjte2jn9pvo9ud2hyfgwcja0k 
+       foreign key (team_id) 
+       references team
+
+    alter table if exists member 
+       add constraint FKcjte2jn9pvo9ud2hyfgwcja0k 
+       foreign key (team_id) 
+       references team;
+2024-08-20T15:24:06.146+09:00  INFO 3795 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-20T15:24:06.199+09:00  WARN 3795 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-20T15:24:06.349+09:00  INFO 3795 --- [    Test worker] study.querydsl.QuerydslBasicTest         : Started QuerydslBasicTest in 1.241 seconds (process running for 1.652)
+2024-08-20T15:24:06.627+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        next value for team_seq
+Hibernate: 
+    select
+        next value for team_seq
+2024-08-20T15:24:06.629+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046629 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+select next value for team_seq
+select next value for team_seq;
+2024-08-20T15:24:06.638+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        next value for team_seq
+Hibernate: 
+    select
+        next value for team_seq
+2024-08-20T15:24:06.639+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046639 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+select next value for team_seq
+select next value for team_seq;
+2024-08-20T15:24:06.640+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        next value for member_seq
+Hibernate: 
+    select
+        next value for member_seq
+2024-08-20T15:24:06.640+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046640 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+select next value for member_seq
+select next value for member_seq;
+2024-08-20T15:24:06.641+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        next value for member_seq
+Hibernate: 
+    select
+        next value for member_seq
+2024-08-20T15:24:06.642+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046642 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+select next value for member_seq
+select next value for member_seq;
+2024-08-20T15:24:06.818+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        team
+        (name, team_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        team
+        (name, team_id) 
+    values
+        (?, ?)
+2024-08-20T15:24:06.820+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046820 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+insert into team (name,team_id) values (?,?)
+insert into team (name,team_id) values ('teamA',1);
+2024-08-20T15:24:06.821+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        team
+        (name, team_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        team
+        (name, team_id) 
+    values
+        (?, ?)
+2024-08-20T15:24:06.821+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046821 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+insert into team (name,team_id) values (?,?)
+insert into team (name,team_id) values ('teamB',2);
+2024-08-20T15:24:06.821+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+2024-08-20T15:24:06.822+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046822 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+insert into member (age,team_id,username,id) values (?,?,?,?)
+insert into member (age,team_id,username,id) values (10,1,'member1',1);
+2024-08-20T15:24:06.822+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+2024-08-20T15:24:06.823+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046823 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+insert into member (age,team_id,username,id) values (?,?,?,?)
+insert into member (age,team_id,username,id) values (20,1,'member2',2);
+2024-08-20T15:24:06.823+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+2024-08-20T15:24:06.823+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046823 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+insert into member (age,team_id,username,id) values (?,?,?,?)
+insert into member (age,team_id,username,id) values (30,2,'member3',3);
+2024-08-20T15:24:06.824+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        member
+        (age, team_id, username, id) 
+    values
+        (?, ?, ?, ?)
+2024-08-20T15:24:06.824+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046824 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+insert into member (age,team_id,username,id) values (?,?,?,?)
+insert into member (age,team_id,username,id) values (40,2,'member4',4);
+2024-08-20T15:24:06.830+09:00 DEBUG 3795 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        count(m1_0.id),
+        sum(m1_0.age),
+        avg(cast(m1_0.age as float(53))),
+        max(m1_0.age),
+        min(m1_0.age) 
+    from
+        member m1_0
+Hibernate: 
+    select
+        count(m1_0.id),
+        sum(m1_0.age),
+        avg(cast(m1_0.age as float(53))),
+        max(m1_0.age),
+        min(m1_0.age) 
+    from
+        member m1_0
+2024-08-20T15:24:06.833+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046833 | took 1ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+select count(m1_0.id),sum(m1_0.age),avg(cast(m1_0.age as float(53))),max(m1_0.age),min(m1_0.age) from member m1_0
+select count(m1_0.id),sum(m1_0.age),avg(cast(m1_0.age as float(53))),max(m1_0.age),min(m1_0.age) from member m1_0;
+2024-08-20T15:24:06.864+09:00  INFO 3795 --- [    Test worker] p6spy                                    : #1724135046864 | took 0ms | rollback | connection 4| url jdbc:h2:tcp://localhost/~/querydsl
+
+;
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
