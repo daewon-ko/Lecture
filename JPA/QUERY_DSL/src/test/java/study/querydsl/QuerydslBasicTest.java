@@ -75,13 +75,12 @@ public class QuerydslBasicTest {
     @Test
     void startQueryDsl() {
         //given
-        QMember m = new QMember("m");
 
         //when
         Member findMember = queryFactory
-                .select(m)
-                .from(m)
-                .where(m.username.eq("member1"))
+                .select(member)
+                .from(member)
+                .where(member.username.eq("member1"))
                 .fetchOne();
 
         //then
@@ -120,8 +119,8 @@ public class QuerydslBasicTest {
                 .fetchOne();
 
         //when
+        assertThat(findMember.getUsername()).isEqualTo("member1");
 
-        //then
 
     }
 
@@ -142,6 +141,36 @@ public class QuerydslBasicTest {
         //then
 
     }
+
+    @DisplayName("")
+    @Test
+    void resultFetch() {
+
+        //given
+        List<Member> fetch = queryFactory.selectFrom(member)
+                .fetch();
+        Member fetchOne = queryFactory.selectFrom(member).fetchOne();
+
+        Member fetchFirst = queryFactory.selectFrom(member).fetchOne();
+
+        // Deprecated
+//        queryFactory.selectFrom(member)
+//                .fetchResults();
+
+
+        // Deprecated
+//        queryFactory.selectFrom(member)
+//                .fetchCount();
+
+
+
+
+        //when
+
+        //then
+
+    }
+
 
     //정럴
     @DisplayName("")
