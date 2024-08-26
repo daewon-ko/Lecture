@@ -1,6 +1,9 @@
 package study.querydsl;
 
+import com.querydsl.core.QueryFactory;
 import com.querydsl.core.Tuple;
+import com.querydsl.core.types.dsl.CaseBuilder;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -161,8 +164,6 @@ public class QuerydslBasicTest {
         // Deprecated
 //        queryFactory.selectFrom(member)
 //                .fetchCount();
-
-
 
 
         //when
@@ -406,10 +407,14 @@ public class QuerydslBasicTest {
 
     }
 
+
+    /**
+     * 나이가 가장 많은 회원 조회
+     */
     @DisplayName("")
     @Test
     void subQuery
-            () {
+    () {
 
         //given
         QMember memberSub = new QMember("memberSub");
@@ -428,6 +433,10 @@ public class QuerydslBasicTest {
 
     }
 
+
+    /**
+     * 나이가 평균 이상인 회원 조회
+     */
     @DisplayName("")
     @Test
     void
@@ -494,6 +503,95 @@ public class QuerydslBasicTest {
         //then
 
     }
+
+    @DisplayName("")
+    @Test
+    void basicCase
+            () {
+        //given
+        List<String> result = queryFactory
+                .select(member.age
+                        .when(10).then("열살")
+                        .when(20).then("스무살")
+                        .otherwise("기타"))
+                .from(member)
+                .fetch();
+        for (String s : result) {
+            System.out.println("s = " + s);
+        }
+
+        //when
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void complexCase() {
+
+        //given
+        List<String> result = queryFactory
+                .select(new CaseBuilder()
+                        .when(member.age.between(0, 20)).then("0~20살")
+                        .when(member.age.between(21, 30)).then("21~30살")
+                        .otherwise("기타"))
+                .from(member)
+                .fetch();
+
+        for (String s : result) {
+            System.out.println("s = " + s);
+        }
+
+
+        //when
+
+        //then
+
+    }
+
+    //상수, 문자 더하기
+    @DisplayName("")
+    @Test
+    void constant
+    () {
+
+        //given
+        List<Tuple> result = queryFactory
+                .select(member.username, Expressions.constant("A"))
+                .from(member)
+                .fetch();
+        for (Tuple tuple : result) {
+            System.out.println("tuple = " + tuple);
+        }
+
+        //when
+
+        //then
+
+    }
+
+    @DisplayName("")
+    @Test
+    void concat() {
+
+        //given
+        List<String> fetch = queryFactory
+                .select(member.username.concat("_").concat(member.age.stringValue()))
+                .from(member)
+                .where(member.username.eq("member1"))
+                .fetch();
+        for (String s : fetch) {
+            System.out.println("s = " + s);
+        }
+
+        //when
+
+        //then
+
+    }
+
+
 
 
 }
