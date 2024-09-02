@@ -10,11 +10,11 @@ build/
 .classpath
 .factorypath
 .project
-.settings %
+.settings
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/ %
+!**/src/main/**/bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
@@ -35,14 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-/*
-!/MVC1
-!/MVC2
-!/Basic
-!/JPA1
-!/JPA_Basic
-!/advanced
-!/DB1
-!/DB2
-
