@@ -4,7 +4,6 @@ import hello.itemservice.domain.Item;
 import hello.itemservice.repository.ItemRepository;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -13,6 +12,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -25,21 +25,24 @@ import java.util.Optional;
 
 @Repository
 @Slf4j
-public class JdbcTemplateItemRepositoryV2 implements ItemRepository {
+public class JdbcTemplateItemRepositoryV3 implements ItemRepository {
     private final NamedParameterJdbcTemplate template;
+    private final SimpleJdbcInsert jdbcInsert;
 
-    public JdbcTemplateItemRepositoryV2(DataSource dataSource) {
+    public JdbcTemplateItemRepositoryV3(DataSource dataSource) {
         this.template = new NamedParameterJdbcTemplate(dataSource);
+        this.jdbcInsert = new SimpleJdbcInsert(dataSource)
+                .withTableName("item")
+                .usingGeneratedKeyColumns("id");
+
     }
 
     @Override
     public Item save(Item item) {
-        String sql = "insert into item (item_name, price, quantity) values (:itemName, :price, :quantity)";
+
         SqlParameterSource params = new BeanPropertySqlParameterSource(item);
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        template.update(sql, params, keyHolder);
-        long key = keyHolder.getKey().longValue();
-        item.setId(key);
+        Number key = jdbcInsert.executeAndReturnKey(params);
+        item.setId(key.longValue());
         return item;
 
     }
@@ -61,7 +64,7 @@ public class JdbcTemplateItemRepositoryV2 implements ItemRepository {
 
     @Override
     public Optional<Item> findById(Long id) {
-        String sql = "select id, item_name, price, quantity from item where id =?";
+        String sql = "select id, item_name, price, quantity from item where id =:id";
         try {
             Map<String, Object> param = Map.of("id", id);
             Item item = template.queryForObject(sql, param, itemRowMapper());
