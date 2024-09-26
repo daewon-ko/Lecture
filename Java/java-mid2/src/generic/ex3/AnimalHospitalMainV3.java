@@ -16,7 +16,7 @@ public class AnimalHospitalMainV3 {
          catHospital.setAnimal(cat);
          catHospital.checkUP();
         // 문제1 해결: 개 병원에 고양이 전달
-        // dogHospital.set(cat); // 다른 타입 입력: 컴파일 오류
+//         dogHospital.set(cat); // 다른 타입 입력: 컴파일 오류
         //문제2해결:개 타입 반환
         dogHospital.setAnimal(dog);
         Dog biggerDog = dogHospital.bigger(new Dog("멍멍이2", 200));
