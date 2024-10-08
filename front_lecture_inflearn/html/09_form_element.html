@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/server/login">
+      <div>
+        <label for="email">email</label>
+        <input type="email" id="email" />
+      </div>
+      <div>
+        <label for="pw">비밀번호</label>
+        <input type="password" id="pw" />
+      </div>
+      <div>
+        <button>로그인</button>
+      </div>
+    </form>
+
+    <h4>당신이 배우고 싶은 언어는? / 다중선택 가능</h4>
+    <div>
+      <input type="checkbox" name="chk_lang" id="chk_html" />
+      <label for="chk_html">HTML</label>
+      <input type="checkbox" name="chk_lang" id="chk_css" />
+      <label for="chk_css">CSS</label>
+      <input type="checkbox" name="chk_lang" id="chk_js" />
+      <label for="chk_js">javascript</label>
+    </div>
+    <h4>당신이 배우고 싶은 언어는? 하나만 선택가능</h4>
+    <div>
+      <input type="radio" name="rdo_lang" id="rdo_html" />
+      <label for="rdo_html">HTML</label>
+
+      <input type="radio" name="rdo_lang" id="rdo_css" />
+      <label for="rdo_css">CSS</label>
+
+      <input type="radio" name="rdo_lang" id="rdo_js" />
+      <label for="rdo_js">Javascript</label>
+    </div>
+
+    <div>
+      <label for="favoriteColor">가장 좋아하는 색상은?</label>
+      <input type="color" name="" id="favoriteColor" />
+    </div>
+
+    <div>
+      <label for="">태어난 날짜는?</label>
+      <input type="date" />
+    </div>
+
+    <div>
+      <label for="arrivalDateTime">입국한 날짜 시간은?</label>
+      <input type="datetime-local" id="arrivalDateTime" />
+    </div>
+
+    <div>
+      <form action="">
+        <label for="userEmail">이메일 주소는?</label>
+        <input type="email" name="" id="userEmail" />
+        <button type="submit">저장</button>
+      </form>
+    </div>
+
+    <div>
+      <label for="attachment">파일첨부</label>
+      <input type="file" name="" id="attachment" />
+    </div>
+    <div>
+      <!-- 사용자의 입력을 받기 위한 용도가 아니라 -->
+      <input type="hidden" />
+    </div>
+
+    <div>
+      <img src="./img/devlogo.jpeg" alt="" style="width: 100px; height: auto" />
+    </div>
+
+    <div>
+      <label for="yearMonth">생년년월</label>
+      <input type="month" name="" id="yearMonth" />
+    </div>
+
+    <div>
+      <label for="">당신의 나이는?</label>
+      <input type="number" name="" id="" min="0" max="100" />
+    </div>
+
+    <div>
+      <label for="">비밀번호</label>
+      <input type="password" name="" id="" />
+    </div>
+
+    <div>
+      <form action="">
+        <label for="phone">전화번호</label>
+        <input type="tel" id="phone" value="" pattern="^010-\d{4}-\d{4}$" />
+        <button type="submit">전송</button>
+      </form>
+    </div>
+
+    <div>
+      <label for="general">일반문자</label>
+      <input type="text" id="general" />
+    </div>
+
+    <div>
+      <label for="visitTime">예약시간</label>
+      <input type="time" name="" id="visitTime" />
+    </div>
+
+    <div>
+      <form action="">
+        <label for="url">블로그 주소는?</label>
+        <input type="url" name="" id="url" />
+        <button type="submit">전송</button>
+      </form>
+    </div>
+
+    <div>
+      <label for="weekPlan">주간계획</label>
+      <input type="week" name="" id="c" />
+    </div>
+
+    <div>
+      <label for="search">검색조건</label>
+      <input type="search" name="" id="search" />
+    </div>
+  </body>
+</html>
