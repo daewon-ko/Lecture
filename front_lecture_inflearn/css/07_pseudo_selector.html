@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 가상클래스 선택자*/
+
+      a {
+        text-decoration: none;
+      }
+
+      /* 마우스가 a 태그위에 올라올떄 */
+      a:hover {
+        background-color: blue;
+        color: white;
+      }
+
+      /* 방문한적이 없는 링크 */
+      a:link {
+        color: blue;
+      }
+      a:visited {
+        color: green;
+      }
+
+      /* 마우스가 포커스 됐을때 */
+      input:focus {
+        border: 5px solid red;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://naver.com">네이버</a>
+    <a href="https://google.com">구글</a>
+    <br />
+    <input type="text" name="" id="" />
+    <br />
+    <table>
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>연락처</th>
+          <th>이메일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>이름</th>
+          <th>연락처</th>
+          <th>이메일</th>
+        </tr>
+
+        <tr>
+          <th>이름</th>
+          <th>연락처</th>
+          <th>이메일</th>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <div>
+      <h1 id="hello">안녕하세요</h1>
+    </div>
+
+    <script>
+      document.getElementById("hello").style.fontSize = "16px";
+    </script>
+  </body>
+</html>
