@@ -47,3 +47,6 @@ out/
 !/DB2
 !/Security
 
+
+spring-batch-old/src/main/resources/application.yaml
+
