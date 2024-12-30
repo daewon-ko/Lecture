@@ -46,6 +46,9 @@ out/
 !/DB1
 !/DB2
 !/Security
+!/spring-batch-old
+
+/spring-batch-old/src/main/resources
 
 
 spring-batch-old/src/main/resources/application.yaml
