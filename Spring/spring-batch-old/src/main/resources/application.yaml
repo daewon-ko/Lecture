@@ -26,5 +26,5 @@ spring:
     jdbc:
       initialize-schema: always
     job:
-      enabled: false  #Spring Boot가 자동으로 실행하는 Job을 비활성화
+      enabled: true  #Spring Boot가 자동으로 실행하는 Job을 비활성화
 
